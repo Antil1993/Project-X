@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dontation Form</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+
+  <!-- Custom CSS. Move to separate file if gets long -->
+  <style>
+    body {
+      background-color: rgb(50, 50, 50);
+    }
+    #mainContainer {
+      background-color: white;
+      -moz-box-shadow:    0px 0px 40px 6px rgb(25, 25, 25);
+      -webkit-box-shadow: 0px 0px 40px 6px rgb(25, 25, 25);
+      box-shadow:         0px 0px 40px 6px rgb(25, 25, 25);
+    }
+    #formHeaderImg {
+      -moz-box-shadow:    inset 0 0 100px #000000;
+      -webkit-box-shadow: inset 0 0 100px #000000;
+      box-shadow:         inset 0 0 100px #000000;
+    }
+    .headerText {
+      font-size: 0.86rem;
+    }
+    .required {
+      color: red;
+    }
+    .leftHorzArrBtn {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-right: 0px;
+    }
+    .middleHorzArrBtn {
+      border-radius: 0px;
+      border-right: 0px;
+
+    }
+    .rightHorzArrBtn {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container px-0" id="mainContainer" style="max-width: 660px">
+  <img class="mb-4" id="formHeaderImg" src="./assets/formHeader.jpeg" style="width:100%"></img>
+  
+  <div class="px-5" id="formHeaderText">
+    <h2 class="mb-4" id="formTitle">Feed the Hungry</h2>
+    <p class="mb-3 headerText"> According to 2020 report by The State of Food Security and Nutrition in the World, 18.9 crore people in India are undernourished and sleep on an empty stomach everyday. 1 out of 5 children under the age of five are underweight.</p>
+    <p class="mb-4 headerText"> It is time we play our part. Please fill in the following details to share food with those in need. Even your smallest food donation can help someone greatly.</p>
+    <p class="mb-4 headerText required">* Required</p>
+  </div>
+
+
+  <form class="needs-validation px-5 row" id="form" novalidate>
+    <div class="mb-4">
+        <label for="name" class="form-label">Name <span class="required">*</span></label>
+        <input type="text"  minlength="2" maxLength="100" class="form-control" id="name" placeholder="Enter name" name="name" required>
+        <div class="invalid-feedback">Please enter a valid name</div>
+    </div>
+      
+
+    <div class="mb-4">
+        <label for="address-line1" class="form-label">Address line 1 <span class="required">*</span></label>
+        <input type="text" minlength="2" maxLength="100" class="form-control" id="address-line1" placeholder="Enter house number and street address" name="address-line1" required>
+        <div class="invalid-feedback">Please enter a valid house number and street adress</div>
+    </div>
+      
+
+    <div class="mb-4">
+        <label for="address-line2" class="form-label">Address line 2 <span class="required">*</span></label>
+        <input type="text" minlength="2" maxLength="100" class="form-control" id="address-line2" placeholder="Enter second line of address" name="address-line2" required>
+        <div class="invalid-feedback">Please enter a valid adress</div>
+    </div>
+      
+
+    <div class="mb-4">
+        <label for="postal-code" class="form-label">Pincode <span class="required">*</span></label>
+        <input type="text" pattern="[1-9][0-9]{5}" class="form-control" id="postal-code" placeholder="Enter 6 digit pincode" name="postal-code" value="335001" readonly aria-describedby="pincodeHelpBlock" required>
+        <div id="pincodeHelpBlock" class="form-text">
+          Right now we only operate in Sri Ganganagar, Rajasthan (335001)
+        </div>
+    </div>
+      
+
+    <div class="mb-5">
+        <label for="phone" class="form-label">Phone number <span class="required">*</span></label>
+        <div class="input-group">
+          <div class="input-group-text">+91</div>
+          <input type="text" class="form-control" pattern="[1-9][0-9]{9}" id="phone" placeholder="Enter 10 digit phone number" aria-describedby="phoneHelpBlock" required>
+          <div class="invalid-feedback">Please enter a valid 10 digit phone number</div>
+        </div>
+        <div id="phoneHelpBlock" class="form-text">
+          This number will ONLY be used when the rider collecting food is unable to reach the address shared above. It will NEVER be used for other promotions/advertising purposes.
+        </div>
+    </div>
+
+
+    <div class="form-check form-switch mb-5">
+        <input class="form-check-input" type="checkbox" name="location" id="locationSwitch" onclick="fetchLocation()" aria-describedby="locationHelpBlock">
+        <label class="form-check-label" for="location">Share location</label>
+        <div id="locationHelpBlock" class="form-text">
+          Having your GPS location will greatly help our rider to reach the correct food collection point on time.<br>Note: Once you click the above link, you may be requested to enable GPS location on your device. Please enable the same when prompted.
+        </div>
+
+        <input type="number" min="-90" max="90" class="visually-hidden" id="latitude" value="0">
+        <input type="number" min="-180" max="180" class="visually-hidden" id="longitude" value="0">
+    </div>
+
+     
+    <div class="mb-4 col">
+        <label class="form-label">Estimated servings to be donated <span class="required">*</span></label>
+        <div class="row mx-3">
+            <input class="btn-check w-auto" type="radio" name="serving" id="serving01" value="1" checked>
+            <label class="btn btn-outline-primary col leftHorzArrBtn" for="serving01" >1</label>
+            <input class="btn-check w-auto" type="radio" name="serving" id="serving02" value="2">
+            <label class="btn btn-outline-primary col middleHorzArrBtn" for="serving02" for="serving02">2</label>
+            <input class="btn-check w-auto" type="radio" name="serving" id="serving03" value="3">
+            <label class="btn btn-outline-primary col middleHorzArrBtn" for="serving03">3</label>
+            <input class="btn-check w-auto" type="radio" name="serving" id="serving04" value="4">
+            <label class="btn btn-outline-primary col middleHorzArrBtn" for="serving04">4</label>
+            <input class="btn-check w-auto" type="radio" name="serving" id="serving05" value="5">
+            <label class="btn btn-outline-primary col middleHorzArrBtn" for="serving05">5</label>
+            <input class="btn-check w-auto" type="radio" name="serving" id="serving06" value="6">
+            <label class="btn btn-outline-primary col middleHorzArrBtn" for="serving06">6</label>
+            <input class="btn-check w-auto" type="radio" name="serving" id="serving07" value="7">
+            <label class="btn btn-outline-primary col middleHorzArrBtn" for="serving07">7</label>
+            <input class="btn-check w-auto" type="radio" name="serving" id="serving08" value="8">
+            <label class="btn btn-outline-primary col rightHorzArrBtn" for="serving08">8+</label>
+        </div>
+        <div id="servingHelpBlock" class="form-text">
+          Please let us know how many people your food donation can serve. This needs to be just a rough estimate and is required for food collection logistics.
+        </div>
+    </div>
+      
+
+    <button type="submit" class="btn btn-primary mb-4 mt-4">Submit</button>
+  </form>
+</div>
+
+<script type="text/javascript" src="./js/formValidation.js"></script>
+
+</body>
+
+</html>
