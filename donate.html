@@ -62,28 +62,28 @@
 
   <form class="needs-validation mx-4 row" id="form" novalidate>
     <div class="mb-4">
-        <label for="name" class="form-label">Name <span class="required">*</span></label>
+        <label for="name" class="form-label">Name (नाम) <span class="required">*</span></label>
         <input type="text"  minlength="2" maxLength="100" class="form-control" id="name" placeholder="Enter name" name="name" required>
         <div class="invalid-feedback">Please enter a valid name</div>
     </div>
       
 
     <div class="mb-4">
-        <label for="address-line1" class="form-label">Address line 1 <span class="required">*</span></label>
+        <label for="address-line1" class="form-label">Address line 1 (पता पंक्ति 1) <span class="required">*</span></label>
         <input type="text" minlength="2" maxLength="100" class="form-control" id="address-line1" placeholder="Enter house number and street address" name="address-line1" required>
         <div class="invalid-feedback">Please enter a valid house number and street adress</div>
     </div>
       
 
     <div class="mb-4">
-        <label for="address-line2" class="form-label">Address line 2 <span class="required">*</span></label>
+        <label for="address-line2" class="form-label">Address line 2 (पता पंक्ति 2) <span class="required">*</span></label>
         <input type="text" minlength="2" maxLength="100" class="form-control" id="address-line2" placeholder="Enter second line of address" name="address-line2" required>
         <div class="invalid-feedback">Please enter a valid adress</div>
     </div>
       
 
     <div class="mb-4">
-        <label for="postal-code" class="form-label">Pincode <span class="required">*</span></label>
+        <label for="postal-code" class="form-label">Pincode (पिनकोड) <span class="required">*</span></label>
         <input type="text" pattern="[1-9][0-9]{5}" class="form-control" id="postal-code" placeholder="Enter 6 digit pincode" name="postal-code" value="335001" readonly aria-describedby="pincodeHelpBlock" required>
         <div id="pincodeHelpBlock" class="form-text">
           Right now we only operate in Sri Ganganagar, Rajasthan (335001)
@@ -92,10 +92,10 @@
       
 
     <div class="mb-5">
-        <label for="phone" class="form-label">Phone number <span class="required">*</span></label>
+        <label for="phone" class="form-label">Phone number (फ़ोन नंबर) <span class="required">*</span></label>
         <div class="input-group">
           <div class="input-group-text">+91</div>
-          <input type="text" class="form-control" pattern="[1-9][0-9]{9}" id="phone" placeholder="Enter 10 digit phone number" aria-describedby="phoneHelpBlock" required>
+          <input type="text" class="form-control" pattern="[1-9][0-9]{9}" id="phone" name="phone" placeholder="Enter 10 digit phone number" aria-describedby="phoneHelpBlock" required>
           <div class="invalid-feedback">Please enter a valid 10 digit phone number</div>
         </div>
         <div id="phoneHelpBlock" class="form-text">
@@ -105,19 +105,19 @@
 
 
     <div class="form-check form-switch mb-5">
-        <label class="form-check-label" for="location">Share location</label>
+        <label class="form-check-label" for="location">Share location (स्थान साझा करें)</label>
         <input class="form-check-input" type="checkbox" name="location" id="locationSwitch" onclick="fetchLocation()" aria-describedby="locationHelpBlock">
         <div id="locationHelpBlock" class="form-text">
           Having your GPS location will greatly help our rider to reach the correct food collection point on time.<br>Note: Once you click the above link, you may be requested to enable GPS location on your device. Please enable the same when prompted.
         </div>
 
-        <input type="number" min="-90" max="90" class="visually-hidden" id="latitude" value="0">
-        <input type="number" min="-180" max="180" class="visually-hidden" id="longitude" value="0">
+        <input type="text" min="-90" max="90" class="visually-hidden" id="latitude" name="latitude" value="0">
+        <input type="text" min="-180" max="180"  class="visually-hidden" id="longitude" name="longitude" value="0">
     </div>
 
      
     <div class="mb-4 col">
-        <label class="form-label">Estimated servings to be donated <span class="required">*</span></label>
+        <label class="form-label">Estimated servings to be donated <span class="required">*</span><br>(अनुमानित लोगों की संख्या जिनके लिए भोजन दान किया जा रहा है)</label>
         <div class="row mx-3">
             <input class="btn-check w-auto" type="radio" name="serving" id="serving01" value="1" checked>
             <label class="btn btn-outline-primary col leftHorzArrBtn" for="serving01" >1</label>
@@ -136,7 +136,7 @@
     </div>
       
 
-    <button type="submit" class="btn btn-primary mb-4 mt-4">Submit</button>
+    <button type="submit" id="submitButton" class="btn btn-primary mb-4 mt-4">Submit</button>
   </form>
 </div>
 
