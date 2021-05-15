@@ -101,13 +101,19 @@ function submitForm(event, form) {
   EnableFormSubmit(false, 'Submitting...')
 
   // Get JSON
+  var usingGetRequest = true; // Set to true when using GET request or JSONP dataType
   var formObj = jQuery(form);
   var payLoadStr = JSON.stringify(formObj.serializeArray())
+  if (usingGetRequest)
+    payLoadStr = "formData=" + payLoadStr;  // Server expects form data in key GET param 'formData'
 
   // Make API call to store data
   $.ajax({
-    type: "POST",
+    type: "GET",
     url: "https://script.google.com/macros/s/AKfycbyPZ3hlCD1OVPe_q2KQ6M7YtSeQ6fFwQJElzJbO2BQyf4b4R8RJwqBlBT4V-0LISaWO/exec",
+    // NOTE: If using jsonp, ensure server returns 'application/javascript' mime type
+    // and uses 'callback' param of the request to pad a dummy json obj
+    dataType: "jsonp",
     data: payLoadStr,
     success: submitSuccess,
     error: submitError,
