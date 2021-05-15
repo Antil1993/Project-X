@@ -12,6 +12,19 @@
         if (!form.checkValidity()) {
           event.preventDefault()
           event.stopPropagation()
+
+          // Scroll to first field having the error
+          var errorElements = document.querySelectorAll("input.form-control:invalid");
+          var scrollVal = 0;
+          if ($(errorElements[0]).prev() && $(errorElements[0]).prev().is("label")) {
+            scrollVal = $(errorElements[0]).prev().offset().top - 10
+          }
+          else {
+            scrollVal = $(errorElements[0]).offset().top - 10
+          }
+          $('html, body').animate({
+            scrollTop: scrollVal
+          }, 0);
         }
 
         form.classList.add('was-validated')

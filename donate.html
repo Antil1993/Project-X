@@ -52,7 +52,7 @@
 <div class="container px-0" id="mainContainer" style="max-width: 660px">
   <img class="mb-4" id="formHeaderImg" src="./assets/formHeader.jpeg" style="width:100%"></img>
   
-  <div class="px-5" id="formHeaderText">
+  <div class="mx-4" id="formHeaderText">
     <h2 class="mb-4" id="formTitle">Feed the Hungry</h2>
     <p class="mb-3 headerText"> According to 2020 report by The State of Food Security and Nutrition in the World, 18.9 crore people in India are undernourished and sleep on an empty stomach everyday. 1 out of 5 children under the age of five are underweight.</p>
     <p class="mb-4 headerText"> It is time we play our part. Please fill in the following details to share food with those in need. Even your smallest food donation can help someone greatly.</p>
@@ -60,7 +60,7 @@
   </div>
 
 
-  <form class="needs-validation px-5 row" id="form" novalidate>
+  <form class="needs-validation mx-4 row" id="form" novalidate>
     <div class="mb-4">
         <label for="name" class="form-label">Name <span class="required">*</span></label>
         <input type="text"  minlength="2" maxLength="100" class="form-control" id="name" placeholder="Enter name" name="name" required>
@@ -105,8 +105,8 @@
 
 
     <div class="form-check form-switch mb-5">
-        <input class="form-check-input" type="checkbox" name="location" id="locationSwitch" onclick="fetchLocation()" aria-describedby="locationHelpBlock">
         <label class="form-check-label" for="location">Share location</label>
+        <input class="form-check-input" type="checkbox" name="location" id="locationSwitch" onclick="fetchLocation()" aria-describedby="locationHelpBlock">
         <div id="locationHelpBlock" class="form-text">
           Having your GPS location will greatly help our rider to reach the correct food collection point on time.<br>Note: Once you click the above link, you may be requested to enable GPS location on your device. Please enable the same when prompted.
         </div>
@@ -128,13 +128,7 @@
             <input class="btn-check w-auto" type="radio" name="serving" id="serving04" value="4">
             <label class="btn btn-outline-primary col middleHorzArrBtn" for="serving04">4</label>
             <input class="btn-check w-auto" type="radio" name="serving" id="serving05" value="5">
-            <label class="btn btn-outline-primary col middleHorzArrBtn" for="serving05">5</label>
-            <input class="btn-check w-auto" type="radio" name="serving" id="serving06" value="6">
-            <label class="btn btn-outline-primary col middleHorzArrBtn" for="serving06">6</label>
-            <input class="btn-check w-auto" type="radio" name="serving" id="serving07" value="7">
-            <label class="btn btn-outline-primary col middleHorzArrBtn" for="serving07">7</label>
-            <input class="btn-check w-auto" type="radio" name="serving" id="serving08" value="8">
-            <label class="btn btn-outline-primary col rightHorzArrBtn" for="serving08">8+</label>
+            <label class="btn btn-outline-primary col rightHorzArrBtn" for="serving05">5+</label>
         </div>
         <div id="servingHelpBlock" class="form-text">
           Please let us know how many people your food donation can serve. This needs to be just a rough estimate and is required for food collection logistics.
